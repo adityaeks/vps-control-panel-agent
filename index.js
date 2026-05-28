@@ -200,8 +200,8 @@ function executeDeployment(deployId, commandStr) {
   }
 
   // Choose appropriate command processor
-  const shell = process.platform === 'win32' ? 'powershell.exe' : '/bin/sh';
-  const args = process.platform === 'win32' ? ['-Command', cleanCommandStr] : ['-c', cleanCommandStr];
+  const shell = process.platform === 'win32' ? 'powershell.exe' : 'sudo';
+  const args = process.platform === 'win32' ? ['-Command', cleanCommandStr] : ['/bin/sh', '-c', cleanCommandStr];
 
   const child = spawn(shell, args, {
     cwd: deployDir,
