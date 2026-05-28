@@ -1,0 +1,29 @@
+# ============================================================
+# REPO 2: vps-control-panel-agent (Agent Only)
+# ============================================================
+
+# Node dependencies
+node_modules/
+
+# Environment files
+.env
+
+# Sandbox folder (used during deployments)
+sandbox/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# PM2
+.pm2/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~

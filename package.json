@@ -1,0 +1,13 @@
+{
+  "name": "vps-control-panel-agent",
+  "version": "1.0.0",
+  "description": "VPS Agent for VPS Control Panel",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0",
+    "systeminformation": "^5.23.5"
+  }
+}
