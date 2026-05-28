@@ -189,7 +189,9 @@ function getDockerLogs(containerId) {
 // COMMAND RUNNER (Automated Deployments)
 // ----------------------------------------------------
 function executeDeployment(deployId, commandStr) {
-  console.log(`Starting deployment ${deployId}: "${commandStr}"`);
+  // Sanitize Windows carriage returns (\r\n -> \n)
+  const cleanCommandStr = commandStr.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  console.log(`Starting deployment ${deployId}: "${cleanCommandStr}"`);
   
   // We can execute inside a project sandbox folder
   const deployDir = path.join(__dirname, 'sandbox');
@@ -199,7 +201,7 @@ function executeDeployment(deployId, commandStr) {
 
   // Choose appropriate command processor
   const shell = process.platform === 'win32' ? 'powershell.exe' : '/bin/sh';
-  const args = process.platform === 'win32' ? ['-Command', commandStr] : ['-c', commandStr];
+  const args = process.platform === 'win32' ? ['-Command', cleanCommandStr] : ['-c', cleanCommandStr];
 
   const child = spawn(shell, args, {
     cwd: deployDir,
